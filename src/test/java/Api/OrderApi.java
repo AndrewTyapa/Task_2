@@ -10,7 +10,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class OrderApi {
-    private static final String BASE_URL = "https://stellarburgers.nomoreparties.site/api";
+    private static final String BASE_URL = "https://qa-stellarburgers.education-services.ru/api";
 
     public static Response createOrder(List<String> ingredients, String accessToken) {
         Map<String, Object> requestBody = new HashMap<>();

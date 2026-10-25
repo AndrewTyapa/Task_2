@@ -14,7 +14,7 @@ public class Ingredient {
     private String image_large;
     private int __v;
 
-    // Геттеры и сеттеры
+    // Гетт и сетт
     public String get_id() {
         return _id;
     }

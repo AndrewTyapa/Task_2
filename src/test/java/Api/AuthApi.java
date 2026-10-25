@@ -1,12 +1,12 @@
 package Api;
 
 import io.restassured.response.Response;
-import models.User;
+import Models.User;
 
 import static io.restassured.RestAssured.given;
 
 public class AuthApi {
-    private static final String BASE_URL = "https://stellarburgers.nomoreparties.site/api";
+    private static final String BASE_URL = "https://qa-stellarburgers.education-services.ru/api";
 
     public static Response registerUser(User user) {
         return given()

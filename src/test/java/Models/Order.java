@@ -11,7 +11,7 @@ public class Order {
     private String updatedAt;
     private int number;
 
-    // Геттеры и сеттеры
+    // Гетт и сетт
     public List<String> getIngredients() {
         return ingredients;
     }

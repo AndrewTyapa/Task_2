@@ -11,7 +11,7 @@ public class User {
         this.name = name;
     }
 
-    // Геттеры
+    // Гетт
     public String getEmail() {
         return email;
     }
@@ -24,7 +24,7 @@ public class User {
         return name;
     }
 
-    // Сеттеры
+    // Сетт
     public void setEmail(String email) {
         this.email = email;
     }
