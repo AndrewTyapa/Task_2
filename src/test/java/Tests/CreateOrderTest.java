@@ -1,10 +1,13 @@
 package Tests;
 
+import Api.AuthApi;
 import Api.OrderApi;
+import Api.Tokens;
 import Api.UserApi;
 import io.qameta.allure.junit4.DisplayName;
 import Models.User;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import Util.TestData;
 import Util.Cleanup;
@@ -16,18 +19,20 @@ public class CreateOrderTest {
     private final User user = TestData.generateRandomUser();
     private String accessToken;
     private final List<String> ingredients = TestData.getValidIngredients();
+    private List<String> validIngredients;
+
+
+    @Before
+    public void setup() {
+        UserApi.createUser(user);
+        Tokens tokens = AuthApi.getTokens(user);
+        accessToken = tokens.getAccessToken();
+    }
+
 
     @Test
     @DisplayName("Создание заказа с авторизацией")
     public void testCreateOrderWithAuth() {
-        createUserAndGetToken();
-        createOrderWithIngredients();
-    }
-    public void createUserAndGetToken() {
-        UserApi.createUser(user);
-        accessToken = UserApi.getAccessToken(user);
-    }
-    public void createOrderWithIngredients() {
         OrderApi.createOrder(ingredients, accessToken)
                 .then()
                 .statusCode(200)

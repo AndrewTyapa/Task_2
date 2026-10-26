@@ -2,7 +2,6 @@ package Api;
 
 import io.restassured.response.Response;
 import Models.User;
-
 import static io.restassured.RestAssured.given;
 
 public class AuthApi {
@@ -44,5 +43,13 @@ public class AuthApi {
                 .then()
                 .extract()
                 .path("refreshToken");
+    }
+    public static Tokens getTokens(User user) {
+        Response response = loginUser(user);
+        // Сразу проверяем, что сервер ответил 200. Если нет — тест падает здесь, а не дальше
+        response.then().statusCode(200);
+        String accessToken = response.path("accessToken");
+        String refreshToken = response.path("refreshToken");
+        return new Tokens(accessToken, refreshToken);
     }
 }
